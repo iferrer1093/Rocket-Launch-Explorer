@@ -14,24 +14,16 @@ const BASE_URL = "https://lldev.thespacedevs.com/2.3.0";
 // - Parses the response
 // - Calls the callback function and passes the results array
 function getUpcomingLaunches() {
-  // TODO: Implement XHR GET request
-  // const xhr = new XMLHttpRequest();
-  //           xhr.open("GET", BASE_URL + "/launches/upcoming/");
-  //           xhr.onreadystatechange = function () {
-  //               if (xhr.readyState === 4 && xhr.status === 200)  {
-  //               const launch = JSON.parse(xhr.responseText)
-  //               callback(launch.results)
-  //               }
-  //           };
-            
-  //           xhr.send();
-
+    const status = document.getElementById("status")
+    status.textContent = "Loading..."
   axios.get(BASE_URL + "/launches/upcoming/")
   .then(function (response) {
+    status.textContent = ""
     populateDropdown(response.data.results)
   })
   .catch(function (error) {
-    //Error message is to be placed here!
+    status.textContent = ("Couldn't load launches: " + error)
+    console.log("Error getting launches:", error)
   })
 }
 
@@ -63,25 +55,18 @@ document.getElementById("launchDropdown").addEventListener("change", function ()
 // Step 4: Create getLaunchDetails(launchId, callback)
 // - Makes a GET request to BASE_URL + "/launches/" + launchId + "/"
 // - Parses the response and passes the launch object to the callback
-function getLaunchDetails(launchId, callback) {
-  // TODO: Implement XHR GET request for a single launch
-      // const xhr = new XMLHttpRequest();
-      //       xhr.open("GET", BASE_URL + "/launches/" + launchId + "/");
-      //       xhr.onreadystatechange = function () {
-      //           if (xhr.readyState === 4 && xhr.status === 200)  {
-      //           const launch = JSON.parse(xhr.responseText)
-      //           callback(launch)
-      //           }
-      //       };
-            
-      //       xhr.send();
+function getLaunchDetails(launchId) {
+    const status = document.getElementById("status")
+    status.textContent = "Loading..."
 
-        axios.get(BASE_URL + "/launches/" + launchId + "/")
+  axios.get(BASE_URL + "/launches/" + launchId + "/")
   .then(function (response) {
+    status.textContent = ""
     displayLaunchInfo(response.data)
   })
   .catch(function (error) {
-    //Error message is to be placed here!
+    status.textContent = ("Failed to get launch details" + error)
+    console.log("Error getting launch details" + error)
   })
 }
 
