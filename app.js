@@ -13,7 +13,7 @@ const BASE_URL = "https://lldev.thespacedevs.com/2.3.0";
 // - Makes a GET request to BASE_URL + "/launches/upcoming/"
 // - Parses the response
 // - Calls the callback function and passes the results array
-function getUpcomingLaunches(callback) {
+function getUpcomingLaunches() {
   // TODO: Implement XHR GET request
   // const xhr = new XMLHttpRequest();
   //           xhr.open("GET", BASE_URL + "/launches/upcoming/");
@@ -27,7 +27,7 @@ function getUpcomingLaunches(callback) {
   //           xhr.send();
 
   axios.get(BASE_URL + "/launches/upcoming/")
-  .then(function (response ) {
+  .then(function (response) {
     populateDropdown(response.data.results)
   })
   .catch(function (error) {
@@ -65,16 +65,24 @@ document.getElementById("launchDropdown").addEventListener("change", function ()
 // - Parses the response and passes the launch object to the callback
 function getLaunchDetails(launchId, callback) {
   // TODO: Implement XHR GET request for a single launch
-      const xhr = new XMLHttpRequest();
-            xhr.open("GET", BASE_URL + "/launches/" + launchId + "/");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200)  {
-                const launch = JSON.parse(xhr.responseText)
-                callback(launch)
-                }
-            };
+      // const xhr = new XMLHttpRequest();
+      //       xhr.open("GET", BASE_URL + "/launches/" + launchId + "/");
+      //       xhr.onreadystatechange = function () {
+      //           if (xhr.readyState === 4 && xhr.status === 200)  {
+      //           const launch = JSON.parse(xhr.responseText)
+      //           callback(launch)
+      //           }
+      //       };
             
-            xhr.send();
+      //       xhr.send();
+
+        axios.get(BASE_URL + "/launches/" + launchId + "/")
+  .then(function (response) {
+    displayLaunchInfo(response.data)
+  })
+  .catch(function (error) {
+    //Error message is to be placed here!
+  })
 }
 
 // Step 5: Create displayLaunchInfo(launch)
