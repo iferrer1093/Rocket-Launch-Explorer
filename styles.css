@@ -1,2 +1,56 @@
 /* Part 3: Add custom styling here (colors, fonts, layout, spacing).
    The starter provides no styles. */
+body {
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   background-color: #DAE2DF;
+   color: #507255;
+   padding: 2px;
+   margin: auto;
+   max-width: 1000px;
+   text-align: center;
+}
+
+h1 {
+   font-size: 35px;
+   margin-bottom: 15px;
+   color: #253C55;
+}
+
+#status {
+   color: #902D41;
+   font-size: 25px;
+   font-weight: bolder;
+}
+
+label{
+   display:block;
+   margin-bottom: 12px;
+   color: #F96F5D;
+   font-size: 20px;
+}
+
+select{
+   color: #F96F5D;
+   text-align: center;
+   width: 100%;
+   height: 35px;
+   border-radius: 12px;
+   margin-bottom: 12px;
+   background-color: #00153D;
+   font-size: 20px;
+}
+
+img {
+   height: auto;
+   width: 100%;
+   max-height: 500px;
+   border-radius: 2px;
+}
+
+#missionDetails, #rocket {
+   padding: 12px;
+   border-radius: 20px;
+   background-color: #9DBEA4;
+   margin-bottom: 20px;
+   font-size: 22px;
+}
