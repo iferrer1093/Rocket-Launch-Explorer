@@ -15,16 +15,24 @@ const BASE_URL = "https://lldev.thespacedevs.com/2.3.0";
 // - Calls the callback function and passes the results array
 function getUpcomingLaunches(callback) {
   // TODO: Implement XHR GET request
-  const xhr = new XMLHttpRequest();
-            xhr.open("GET", BASE_URL + "/launches/upcoming/");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200)  {
-                const launch = JSON.parse(xhr.responseText)
-                callback(launch.results)
-                }
-            };
+  // const xhr = new XMLHttpRequest();
+  //           xhr.open("GET", BASE_URL + "/launches/upcoming/");
+  //           xhr.onreadystatechange = function () {
+  //               if (xhr.readyState === 4 && xhr.status === 200)  {
+  //               const launch = JSON.parse(xhr.responseText)
+  //               callback(launch.results)
+  //               }
+  //           };
             
-            xhr.send();
+  //           xhr.send();
+
+  axios.get(BASE_URL + "/launches/upcoming/")
+  .then(function (response ) {
+    populateDropdown(response.data.results)
+  })
+  .catch(function (error) {
+    //Error message is to be placed here!
+  })
 }
 
 // Step 2: Create populateDropdown(launches)
